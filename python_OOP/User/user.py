@@ -39,6 +39,6 @@ jenny.display_user_balance()
 
 guido.transfer_money(200,jenny)
 
-#  
+#  #
 
 
