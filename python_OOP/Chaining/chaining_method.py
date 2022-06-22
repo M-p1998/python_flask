@@ -32,4 +32,4 @@ jenny = User("Jenny")
 jenny.make_deposit(500).make_withdrawal(100).make_withdrawal(200).make_withdrawal(50).display_user_balance()
 
 guido.transfer_money(200,jenny)
-# 
+# # #
