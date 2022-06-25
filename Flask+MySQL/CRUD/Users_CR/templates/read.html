@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <title>Read(All)</title>
+</head>
+<body>
+    <h1>All Users</h1>
+    <table>
+        <thead>
+            <td>ID</td>
+            <td>Full Name</td>
+            <td>Email</td>
+            <td>Created At</td>
+        </thead>
+        <tbody>
+            {% for one_user in userss %}
+            <tr>
+                <td>{{one_user.first_name}}</td>
+                <td>{{one_user.last_name}}</td>
+                <td>{{one_user.email}}</td>
+                <td>{{one_user.created_at}}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <a href="/users/new">Add a new user</a>
+</body>
+</html>
