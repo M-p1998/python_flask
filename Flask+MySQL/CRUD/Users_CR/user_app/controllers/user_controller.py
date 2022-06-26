@@ -1,7 +1,6 @@
 from user_app import app
 from flask import Flask, render_template, request, redirect
-# from user_app.models import User
-
+from user_app.models.user import User
 @app.route("/")
 def first():
     Many_users = User.get_all()
