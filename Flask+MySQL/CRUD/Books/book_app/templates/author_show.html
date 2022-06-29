@@ -7,8 +7,33 @@
     <title>Author Show</title>
 </head>
 <body>
-    <h1> favorates</h1>
+    <h1>{{author1.name}}'s favorates</h1>
+    <table>
+        <thead>
+            <td>Title</td>
+            <td># of pages</td>
+        </thead>
+        <tbody>
+            {% for book in author1.many_books %}
+                <tr>
+                    <td>{{book.title}}</td>
+                    <td>{{book.number_of_pages}}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
     <h1>Add Author's Favorite</h1>
-    {{books.title}}
+    <form action="/add_book" method="post">
+        <p>
+            <label>Book:</label>
+            <input type="hidden" name="Author_id" value="{{author1.id}}"/>
+            <select name="BOOK_id">
+                {% for books in book %}
+                    <option value="{{books.id}}">{{books.title}}</option>
+                {% endfor %}
+            </select>
+        </p>
+        <input type="submit" value="Add" />
+    </form>
 </body>
 </html>

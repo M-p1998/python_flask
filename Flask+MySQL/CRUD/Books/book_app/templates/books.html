@@ -22,7 +22,7 @@
     </form>
     <h1>All Books</h1>
         {% for book in books %}
-            <p><a href="/">{{book.title}}</a></p>
+            <p><a href="/books/{{book.id}}">{{book.title}}</a></p>
         {% endfor %}
    <button> <a href="/authors">Home</a></button>
 </body>

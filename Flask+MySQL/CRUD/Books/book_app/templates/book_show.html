@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Show</title>
+</head>
+<body>
+    <h1>Title: {{book2.title}}</h1>
+    <strong>Favorited by:</strong>
+    <h1>Add Book's Favorite</h1>
+    <form action="/add/author" method="post">
+        <p>
+            <label>Author:</label>
+            <input type="hidden" name="{{BOOK_ID}}" value="{{book2.id}}"/>
+            <select name="{{AUTHOR_ID}}">
+                {% for authors in all_authors %}
+                    <option value="">{{authors.name}}</option>
+                {% endfor %}
+            </select>
+        </p>
+        <input type="submit" value="Add"/>
+    </form>
+    <a href="/books">Home</a>
+</body>
+</html>
