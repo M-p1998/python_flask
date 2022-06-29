@@ -1,5 +1,8 @@
 
+from sqlite3 import connect
+from this import d
 from book_app.config.mysqlconnection import connectToMySQL
+from book_app.models import book
 
 class Author:
     def __init__(self, data):
@@ -8,12 +11,13 @@ class Author:
         self.created_at= data["created_at"]
         self.updated_at=data["updated_at"]
 
+
     @classmethod
     def create_authors(cls, data):
         query= "INSERT INTO authors (name, created_at, updated_at) VALUES (%(Name)s, NOW(), NOW());"
         return connectToMySQL("authors_books").query_db(query, data)
     
-    classmethod
+    @classmethod
     def get_all_authors(cls):
         query="SELECT * FROM authors;"
         results= connectToMySQL("authors_books").query_db(query)
@@ -21,3 +25,28 @@ class Author:
         for a in results:
             authors.append(cls(a))
         return authors
+
+    # @classmethod
+    # def get_author_with_books(cls, data):
+    #     query = "SELECT * FROM authors LEFT JOIN books ON books.author_id = authors.id WHERE authors.id = %(id)s;"
+    #     results = connectToMySQL("authors_books").query_db(query,data)
+    #     author = cls(results[0])
+
+    #     for db in results:
+    #         book_data={
+    #             "id": db["books.id"],
+    #             "title": db["title"],
+    #             "number_of_pages": db["number_of_pages"],
+    #             "created_at": db["books.created_at"],
+    #             "updated_at": db["books.updated_at"]
+    #         }
+    #         author.books.append(book.Book(book_data))
+    #     return author
+
+    @classmethod
+    def get_all_authors(cls):
+        query = "SELECT * FROM authors;"
+        results =  connectToMySQL("authors_books").query_db(query)
+        return results
+
+   

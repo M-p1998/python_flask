@@ -16,9 +16,9 @@
         <input type="submit" value="Create" />
     </form>
     <h1>All Authors</h1>
-        <!-- {% for all in all_authors %}
-            <a href="">{{all.name}}</a>
-        {% endfor %} -->
+        {% for all in all_authors %}
+            <p><a href="/authors/{{all.id}}">{{all.name}}</a></p>
+        {% endfor %}
     <a href="/books">Add Book</a>
 </body>
 </html>
