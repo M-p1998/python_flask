@@ -8,5 +8,11 @@
 </head>
 <body>
     <h1>success</h1>
+    <p>Email address entered: </p>
+    {% for one in all %}
+        <p>{{one.email}} was created at {{one.created_at}}</p>
+        <a href="/delete/{{one.id}}">Delete</a>
+        
+    {% endfor %}
 </body>
 </html>

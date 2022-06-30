@@ -18,4 +18,13 @@ def second():
 
 @app.route("/success")
 def third():
-    return render_template("success.html")
+    all = Email.get_all()
+    return render_template("success.html", all=all)
+
+@app.route("/delete/<int:id>")
+def delete(id):
+    data={
+        "id": id
+    }
+    Email.delete_email(data)
+    return redirect("/success")
