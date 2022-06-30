@@ -27,7 +27,8 @@ def show(author_id):
     }
     author = Author.get_author_by_id(data)
     book= Book.get_all_books()
-    return render_template("author_show.html", author1=author, book= book)
+    un_fav_book = Book.unfavorited_books(data)
+    return render_template("author_show.html", author1=author, book= book, un_fav_book=un_fav_book)
 
 @app.route("/add_book", methods=["post"])
 def addBook():

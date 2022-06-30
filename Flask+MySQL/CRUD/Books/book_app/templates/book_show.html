@@ -8,15 +8,19 @@
 </head>
 <body>
     <h1>Title: {{book2.title}}</h1>
-    <strong>Favorited by:</strong>
+    <p>Favorited by:
+        {% for author in book2.authors_who_favorited %}
+            <p>{{author.name}}</p>
+        {% endfor %}
+    </p>
     <h1>Add Book's Favorite</h1>
     <form action="/add/author" method="post">
         <p>
             <label>Author:</label>
-            <input type="hidden" name="{{BOOK_ID}}" value="{{book2.id}}"/>
-            <select name="{{AUTHOR_ID}}">
-                {% for authors in all_authors %}
-                    <option value="">{{authors.name}}</option>
+            <input type="hidden" name="BOOK_id" value="{{book2.id}}"/>
+            <select name="Author_id">
+                {% for authors in un_fav_author %}
+                    <option value="{{authors.id}}">{{authors.name}}</option>
                 {% endfor %}
             </select>
         </p>

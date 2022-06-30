@@ -28,12 +28,13 @@
             <label>Book:</label>
             <input type="hidden" name="Author_id" value="{{author1.id}}"/>
             <select name="BOOK_id">
-                {% for books in book %}
+                {% for books in un_fav_book %}
                     <option value="{{books.id}}">{{books.title}}</option>
                 {% endfor %}
             </select>
         </p>
         <input type="submit" value="Add" />
     </form>
+    <a href="/authors">Home</a>
 </body>
 </html>
