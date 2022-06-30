@@ -24,14 +24,17 @@ def show_book(book_id):
     }
     authors = Author.get_all_authors()
     book = Book.get_book_by_id(DATA)
-    return render_template("book_show.html", book2=book, all_authors=authors)
+    un_fav_author = Author.unfav_author(DATA)
+    return render_template("book_show.html", book2=book, all_authors=authors, un_fav_author=un_fav_author)
 
 @app.route("/add/author", methods=["post"])
 def add():
     data={
-        "BOOK_ID":request.form["BOOK_ID"],
-        "AUTHOR_ID":request.form["AUTHOR_ID"]
+        "BOOK_id":request.form["BOOK_id"],
+        "Author_id":request.form["Author_id"]
 
     }
-    Book_id = request.form["BOOK_ID"]
+    Book_id = request.form["BOOK_id"]
+    add =  Author.add_book_to_authors_fav(data)
+    print (add)
     return redirect(f"/books/{Book_id}")

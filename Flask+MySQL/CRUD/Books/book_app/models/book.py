@@ -1,3 +1,4 @@
+from sqlite3 import connect
 from book_app.config.mysqlconnection import connectToMySQL
 from book_app.models import author
 class Book:
@@ -29,8 +30,8 @@ class Book:
         results = connectToMySQL("authors_books").query_db(query,data)
         oneBook = cls(results[0])
         for row in results:
-            # if row["authors.id"] == None:
-            #     break;
+            if row["authors.id"] == None:
+                break;
             author_data={
                 "id": row["authors.id"],
                 "name":row["name"],
@@ -39,5 +40,14 @@ class Book:
             }
             oneBook.authors_who_favorited.append(author.Author(author_data))
         return oneBook
+    
+    @classmethod
+    def unfavorited_books(cls, data):
+        query="SELECT * FROM books WHERE books.id NOT IN (SELECT book_id from favorites WHERE author_id =%(id)s);"
+        results = connectToMySQL("authors_books").query_db(query,data)
+        books=[]
+        for b in results:
+            books.append(cls(b))
+        return books
     
     
